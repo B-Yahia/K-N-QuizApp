@@ -127,7 +127,7 @@
                 assertEquals("Math", question.getTopic());
             }
 
-            //Remove test data from DB
+            //Remove the test data from DB
             for (Question question : mathQuestions) {
                 daoQuestion.deleteQuestion(question.getId());
             }
