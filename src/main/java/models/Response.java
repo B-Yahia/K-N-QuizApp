@@ -7,8 +7,6 @@ public class Response {
     private String text;
     private boolean isCorrect;
 
-    public Response() {
-    }
 
     public Response(int id, int questionId, String text, boolean isCorrect) {
         this.id = id;
@@ -17,37 +15,12 @@ public class Response {
         this.isCorrect = isCorrect;
     }
 
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
-    }
-
     public String getText() {
         return text;
     }
 
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public boolean isCorrect() {
         return isCorrect;
-    }
-
-    public void setCorrect(boolean isCorrect) {
-        this.isCorrect = isCorrect;
     }
 }
 

@@ -36,14 +36,14 @@
 
             // Retrieve the question from the database
             var savedQuestions = daoQuestion.searchQuestionByTopic("Math");
-            assertFalse(savedQuestions.isEmpty(), "No questions retrieved from database");
+            assertFalse(savedQuestions.isEmpty());
 
             var retrievedQuestion = savedQuestions.get(0);
 
             // Assert that the saved and retrieved questions are equal
-            assertEquals(questionToSave.getTopic(), retrievedQuestion.getTopic(), "Topics do not match");
-            assertEquals(questionToSave.getDifficultyRank(), retrievedQuestion.getDifficultyRank(), "Difficulty ranks do not match");
-            assertEquals(questionToSave.getContent(), retrievedQuestion.getContent(), "Contents do not match");
+            assertEquals(questionToSave.getTopic(), retrievedQuestion.getTopic());
+            assertEquals(questionToSave.getDifficultyRank(), retrievedQuestion.getDifficultyRank());
+            assertEquals(questionToSave.getContent(), retrievedQuestion.getContent());
 
             //Remove test data from DB
             daoQuestion.deleteQuestion(retrievedQuestion.getId());
@@ -82,6 +82,7 @@
             assertEquals(retrievedQuestion.getTopic(), updatedQuestion.getTopic());
             assertEquals(retrievedQuestion.getDifficultyRank(), updatedQuestion.getDifficultyRank());
             assertEquals(retrievedQuestion.getContent(), updatedQuestion.getContent());
+            assertNotEquals(retrievedQuestion.getTopic(),questionToSave.getTopic());
 
             //Remove test data from DB
             daoQuestion.deleteQuestion(retrievedQuestion.getId());
@@ -106,6 +107,7 @@
 
             // Attempt to retrieve the deleted question from the database
             List<Question> questionsAfterDelete = daoQuestion.searchQuestionByTopic("Math");
+            assertEquals(questionsAfterDelete.size(),0);
 
 
         }

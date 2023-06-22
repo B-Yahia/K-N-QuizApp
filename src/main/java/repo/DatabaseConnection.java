@@ -13,6 +13,7 @@ public class DatabaseConnection {
 
     public static Connection getConnection() {
         if (connection == null) {
+            // Read the file that has the DB credentials
             try (InputStream input = DatabaseConnection.class.getClassLoader().getResourceAsStream("database.properties")) {
                 Properties properties = new Properties();
                 properties.load(input);
@@ -21,6 +22,7 @@ public class DatabaseConnection {
                 String user = properties.getProperty("db.user");
                 String password = properties.getProperty("db.password");
 
+                //Create Connection
                 connection = DriverManager.getConnection(url, user, password);
             } catch (IOException | SQLException e) {
                 e.printStackTrace();

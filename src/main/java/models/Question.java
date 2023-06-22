@@ -12,16 +12,6 @@ public class Question {
     private List<Response> responses;
 
 
-
-    public Question(int id, int quizId, String topic, int difficultyRank, String content, List<Response> responses) {
-        this.id = id;
-        this.quizId = quizId;
-        this.topic = topic;
-        this.difficultyRank = difficultyRank;
-        this.content = content;
-        this.responses = responses;
-    }
-
     public Question(int id,  String topic, int difficultyRank, String content, List<Response> responses) {
         this.id = id;
         this.topic = topic;
@@ -33,18 +23,6 @@ public class Question {
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(int quizId) {
-        this.quizId = quizId;
     }
 
     public String getTopic() {

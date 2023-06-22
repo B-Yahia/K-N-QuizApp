@@ -29,6 +29,7 @@ public class DaoQuestion {
             var generatedKeys = pstmtQuestion.getGeneratedKeys();
             if (generatedKeys.next()) {
                 int questionId = generatedKeys.getInt(1);
+                // Insert new responses to the question
                 saveResponses(question.getResponses(), questionId, connection);
             }
         }
@@ -95,6 +96,7 @@ public class DaoQuestion {
         return questionIds;
     }
 
+    // Search question with ID in DB
     private Question findQuestionById(int questionId) throws SQLException {
         Question question = null;
         try (var pstmt = connection.prepareStatement("SELECT topic, difficulty_rank , content FROM questions WHERE question_id = ?")) {
@@ -106,6 +108,7 @@ public class DaoQuestion {
         return question;
     }
 
+    // Search Responses of questions by question ID
     private List<Response> findResponsesByQuestionId(int questionId) throws SQLException {
         List<Response> responses = new ArrayList<>();
         String sql = "SELECT response_id, text, correct FROM responses WHERE question_id = ?";
